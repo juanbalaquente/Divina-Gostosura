@@ -1,0 +1,11 @@
+# Ignorar backups e arquivos temporários
+*.log
+*.tmp
+*.bak
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Pasta de dados, se não quiser versionar estoque.json:
+DATA/estoque.json
