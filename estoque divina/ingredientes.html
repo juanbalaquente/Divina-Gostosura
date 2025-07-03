@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matérias-Primas - Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Matérias-Primas</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos Acabados</a></li>
+          <li><a href="ingredientes.html">Matérias-Primas</a></li>
+          <li><a href="receitas.html">Receitas</a></li>
+          <li><a href="producao.html">Produção</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="ingredientes-section">
+        <h2>Gerenciamento de Matérias-Primas</h2>
+
+        <div class="action-buttons" style="margin-bottom: 20px">
+          <button onclick="adicionarMateriaPrima()" class="btn-primary">
+            Adicionar Nova Matéria-Prima
+          </button>
+          <button id="btnRegistrarEntrada" class="btn-success">
+            Registrar Entrada de Matéria-Prima
+          </button>
+          <button id="btnRegistrarSaidaMateriaPrima" class="btn-danger">
+            Registrar Saída de Matéria-Prima
+          </button>
+        </div>
+
+        <div id="form-materia-prima" style="display: none">
+          <h3>Adicionar/Editar Matéria-Prima</h3>
+          <form id="materiaPrimaForm">
+            <input type="hidden" id="materiaPrimaId" />
+            <div>
+              <label for="nomeMateriaPrima">Nome:</label>
+              <input type="text" id="nomeMateriaPrima" required />
+            </div>
+            <div>
+              <label for="unidadeMateriaPrima">Unidade:</label>
+              <input
+                type="text"
+                id="unidadeMateriaPrima"
+                placeholder="Ex: Kg, litro, pacote"
+                required
+              />
+            </div>
+            <div>
+              <label for="estoqueMateriaPrimaInicial">Estoque Inicial:</label>
+              <input
+                type="number"
+                id="estoqueMateriaPrimaInicial"
+                step="0.01"
+                min="0"
+                value="0"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              class="btn-primary"
+              id="btnSalvarMateriaPrima"
+            >
+              Salvar Matéria-Prima
+            </button>
+            <button
+              type="button"
+              onclick="cancelarEdicaoMateriaPrima()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <div
+          id="form-entrada-mp"
+          style="
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+          "
+        >
+          <h3>Registrar Entrada de Matéria-Prima</h3>
+          <form id="entradaMateriaPrimaForm">
+            <div>
+              <label for="selectMateriaPrimaEntrada">Matéria-Prima:</label>
+              <select id="selectMateriaPrimaEntrada" required>
+                <option value="">Selecione a matéria-prima</option>
+              </select>
+            </div>
+            <div>
+              <label for="quantidadeEntrada">Quantidade da Entrada:</label>
+              <input
+                type="number"
+                id="quantidadeEntrada"
+                step="0.01"
+                min="0.01"
+                required
+              />
+              <span
+                id="unidadeQuantidadeEntrada"
+                style="margin-left: 10px; font-weight: bold; color: #800000"
+              ></span>
+            </div>
+            <div>
+              <label for="dataEntrada">Data da Entrada:</label>
+              <input type="date" id="dataEntrada" required />
+            </div>
+            <div>
+              <label for="motivoEntrada">Motivo/Fornecedor (Opcional):</label>
+              <input
+                type="text"
+                id="motivoEntrada"
+                placeholder="Ex: Compra do Fornecedor X, Reposição"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn-success"
+              id="btnConfirmarEntradaMP"
+            >
+              Confirmar Entrada
+            </button>
+            <button
+              type="button"
+              onclick="cancelarEntradaMateriaPrima()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <div
+          id="form-saida-mp"
+          style="
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+          "
+        >
+          <h3>Registrar Saída de Matéria-Prima (Outros Motivos)</h3>
+          <form id="saidaMateriaPrimaForm">
+            <div>
+              <label for="selectMateriaPrimaSaida">Matéria-Prima:</label>
+              <select id="selectMateriaPrimaSaida" required>
+                <option value="">Selecione a matéria-prima</option>
+              </select>
+            </div>
+            <div>
+              <label for="quantidadeSaidaMP">Quantidade da Saída:</label>
+              <input
+                type="number"
+                id="quantidadeSaidaMP"
+                step="0.01"
+                min="0.01"
+                required
+              />
+              <span
+                id="unidadeQuantidadeSaidaMP"
+                style="margin-left: 10px; font-weight: bold; color: #800000"
+              ></span>
+            </div>
+            <div>
+              <label for="dataSaidaMP">Data da Saída:</label>
+              <input type="date" id="dataSaidaMP" required />
+            </div>
+            <div>
+              <label for="motivoSaidaMP">Motivo da Saída:</label>
+              <input
+                type="text"
+                id="motivoSaidaMP"
+                placeholder="Ex: Descarte, Perda, Amostra, Uso Interno"
+                required
+              />
+            </div>
+            <button type="button" class="btn-danger" id="btnConfirmarSaidaMP">
+              Confirmar Saída
+            </button>
+            <button
+              type="button"
+              onclick="cancelarSaidaMateriaPrima()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <h3 style="margin-top: 40px">Lista de Matérias-Primas</h3>
+        <table id="tabela-materias-primas">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Unidade</th>
+              <th>Estoque Atual</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+      <div id="feedback-message" class="hidden"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Sua Fábrica de Massas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/ingredientes.js"></script>
+  </body>
+</html>

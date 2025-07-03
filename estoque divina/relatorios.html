@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatórios - Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Relatórios de Estoque e Movimentações</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos Acabados</a></li>
+          <li><a href="ingredientes.html">Matérias-Primas</a></li>
+          <li><a href="receitas.html">Receitas</a></li>
+          <li><a href="producao.html">Produção</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+          <li><a href="clientes.html">Clientes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="feedback-message" class="hidden"></div>
+      <section id="relatorios-section">
+        <h2>Visão Geral do Estoque</h2>
+
+        <h3>Produtos Acabados em Estoque</h3>
+        <div class="table-container">
+          <table id="tabela-estoque-produtos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome do Produto</th>
+                <th>Unidade</th>
+                <th>Estoque Atual</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h3>Matérias-Primas em Estoque</h3>
+        <div class="table-container">
+          <table id="tabela-estoque-ingredientes">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome da Matéria-Prima</th>
+                <th>Unidade</th>
+                <th>Estoque Atual</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h2 style="margin-top: 40px">Clientes Cadastrados</h2>
+        <div class="table-container">
+          <table id="tabela-clientes-cadastrados">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Cidade/UF</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h2 style="margin-top: 40px">Histórico de Movimentações</h2>
+
+        <div class="filter-controls">
+          <label for="filtroTipo">Filtrar por Tipo:</label>
+          <select id="filtroTipo">
+            <option value="todos">Todos</option>
+            <option value="producao">Produção</option>
+            <option value="entrada_materia">Entrada Matéria-Prima</option>
+            <option value="saida_materia">
+              Saída Matéria-Prima (Descarte/Uso Interno)
+            </option>
+            <option value="venda">Venda de Produto Acabado</option>
+          </select>
+        </div>
+
+        <div class="table-container">
+          <table id="tabela-historico-movimentacoes">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Item</th>
+                <th>Quantidade</th>
+                <th>Unidade</th>
+                <th>Detalhes</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Sua Fábrica de Massas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/relatorio.js"></script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos Acabados - Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Produtos Acabados</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos Acabados</a></li>
+          <li><a href="ingredientes.html">Matérias-Primas</a></li>
+          <li><a href="receitas.html">Receitas</a></li>
+          <li><a href="producao.html">Produção</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+          <li><a href="clientes.html">Clientes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="feedback-message" class="hidden"></div>
+      <section id="produtos-section">
+        <h2>Gerenciamento de Produtos Acabados</h2>
+
+        <div class="action-buttons" style="margin-bottom: 20px">
+          <button onclick="adicionarProduto()" class="btn-primary">
+            Adicionar Novo Produto
+          </button>
+          <button id="btnRegistrarSaidaProduto" class="btn-danger">
+            Registrar Saída/Venda
+          </button>
+        </div>
+
+        <div id="form-produto" style="display: none">
+          <h3>Adicionar/Editar Produto</h3>
+          <form id="produtoForm">
+            <input type="hidden" id="produtoId" />
+            <div>
+              <label for="nomeProduto">Nome:</label>
+              <input type="text" id="nomeProduto" required />
+            </div>
+            <div>
+              <label for="unidadeProduto">Unidade:</label>
+              <input
+                type="text"
+                id="unidadeProduto"
+                placeholder="Ex: unidade, Kg, bandeja"
+                required
+              />
+            </div>
+            <div>
+              <label for="precoProduto">Preço Venda:</label>
+              <input type="number" id="precoProduto" step="0.01" required />
+            </div>
+            <button type="button" class="btn-primary" id="btnSalvarProduto">
+              Salvar Produto
+            </button>
+            <button
+              type="button"
+              onclick="cancelarEdicaoProduto()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <div
+          id="form-saida-produto"
+          style="
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+          "
+        >
+          <h3>Registrar Saída/Venda de Produto Acabado</h3>
+          <form id="saidaProdutoForm">
+            <div>
+              <label for="selectProdutoSaida">Produto:</label>
+              <select id="selectProdutoSaida" required>
+                <option value="">Selecione o produto</option>
+              </select>
+            </div>
+            <div>
+              <label for="quantidadeSaida">Quantidade da Saída:</label>
+              <input
+                type="number"
+                id="quantidadeSaida"
+                step="0.01"
+                min="0.01"
+                required
+              />
+              <span
+                id="unidadeQuantidadeSaida"
+                style="margin-left: 10px; font-weight: bold; color: #800000"
+              ></span>
+            </div>
+            <div>
+              <label for="selectClienteSaida">Cliente:</label>
+              <select id="selectClienteSaida" required>
+                <option value="">Selecione o cliente</option>
+              </select>
+            </div>
+            <div>
+              <label for="dataSaida">Data da Saída:</label>
+              <input type="date" id="dataSaida" required />
+            </div>
+            <div>
+              <label for="motivoSaida">Motivo da Saída (Opcional):</label>
+              <input
+                type="text"
+                id="motivoSaida"
+                placeholder="Ex: Venda para Cliente X, Descarte, Amostra"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn-danger"
+              id="btnConfirmarSaidaProduto"
+            >
+              Confirmar Saída
+            </button>
+            <button
+              type="button"
+              onclick="cancelarSaidaProduto()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <h3 style="margin-top: 40px">Lista de Produtos Acabados</h3>
+        <div class="table-container">
+          <table id="tabela-produtos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Unidade</th>
+                <th>Estoque Atual</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Sua Fábrica de Massas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/produtos.js"></script>
+  </body>
+</html>

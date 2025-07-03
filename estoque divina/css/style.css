@@ -1,0 +1,580 @@
+/* css/style.css */
+
+/* RESET BÁSICO para remover margens e paddings padrão do navegador */
+html,
+body {
+  margin: 0; /* Remove margens externas padrão */
+  padding: 0; /* Remove preenchimentos internos padrão */
+  width: 100%; /* Garante que o body e html ocupem 100% da largura da viewport */
+  /* overflow-x: hidden; */ /* Removido para permitir rolagem horizontal em tabelas se necessário */
+  box-sizing: border-box; /* Inclui padding e border na largura/altura total dos elementos */
+}
+
+/* Aplica box-sizing a todos os elementos para um controle de layout mais previsível */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e legível */
+  background-color: #f8f8f8; /* Branco suave para o fundo da página */
+  color: #333333; /* Cor do texto principal (cinza escuro) */
+  line-height: 1.6; /* Altura da linha para melhor legibilidade do texto */
+  font-size: 16px; /* Tamanho base da fonte para desktop (pode ser ajustado em media queries) */
+}
+
+/* Estilos para o Cabeçalho */
+header {
+  background-color: #800000; /* Vermelho Vinho/Borgonha (seu tema) */
+  color: white; /* Cor do texto do cabeçalho */
+  padding: 1.5em 15px; /* Preenchimento interno (vertical e lateral) */
+  text-align: center; /* Alinha o texto ao centro */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25); /* Sombra suave para profundidade */
+  width: 100%; /* Garante que o cabeçalho ocupe 100% da largura da tela */
+  /* box-sizing: border-box; já definido globalmente */
+}
+
+header h1 {
+  margin: 0; /* Remove margem padrão do h1 dentro do header */
+  font-size: 2.5em; /* Tamanho da fonte para o título principal */
+  color: #ffffff; /* Garante que o título seja branco */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil no texto do título */
+  padding: 0; /* Garante que não haja padding interno extra que cause espaçamento */
+}
+
+/* Estilos para a Navegação */
+nav ul {
+  list-style: none; /* Remove marcadores de lista */
+  padding: 0; /* Remove preenchimento padrão da lista */
+  margin: 15px auto 0 auto; /* Margem superior, e centraliza horizontalmente */
+  display: flex; /* Habilita Flexbox para alinhamento horizontal dos itens */
+  justify-content: center; /* Centraliza os itens de navegação */
+  background-color: #a00000; /* Tom de vermelho escuro para o fundo da navegação */
+  border-radius: 8px; /* Cantos arredondados */
+  max-width: 900px; /* Limita a largura máxima da barra de navegação */
+  overflow: hidden; /* Garante que border-radius funcione com os itens internos */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo em telas menores */
+}
+
+nav ul li {
+  margin: 0; /* Remove margens padrão dos itens de lista */
+  flex: 1 1 auto; /* Permite que os itens cresçam e encolham, ocupando o espaço disponível */
+  min-width: 100px; /* Garante uma largura mínima para cada item do menu */
+}
+
+nav ul li a {
+  color: white; /* Cor do texto dos links */
+  text-decoration: none; /* Remove sublinhado */
+  padding: 14px 10px; /* Preenchimento interno dos links */
+  display: block; /* Faz o link ocupar todo o espaço do item de lista */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves para hover */
+  font-weight: 600; /* Texto em negrito */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  white-space: nowrap; /* Impede quebra de linha no texto do link */
+  overflow: hidden; /* Garante que o texto não transborde */
+  text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+  font-size: 0.9em; /* Tamanho da fonte para links de navegação */
+}
+
+nav ul li a:hover,
+nav ul li a.active-link {
+  /* Estilo ao passar o mouse e para o link ativo (se implementado) */
+  background-color: #cd5c5c; /* Tom mais claro de vermelho ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de "levantar" */
+}
+
+/* Estilos para o Conteúdo Principal das Páginas */
+main {
+  padding: 30px; /* Preenchimento interno */
+  max-width: 1200px; /* Largura máxima do conteúdo */
+  margin: 30px auto; /* Margem superior/inferior, centraliza horizontalmente */
+  background-color: #ffffff; /* Fundo branco para o conteúdo principal */
+  border-radius: 10px; /* Cantos arredondados */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2,
+h3,
+h4 {
+  color: #800000; /* Títulos em vermelho escuro */
+  border-bottom: 2px solid #eeeeee; /* Linha sutil abaixo dos títulos */
+  padding-bottom: 12px; /* Espaçamento abaixo da linha */
+  margin-bottom: 25px; /* Margem inferior */
+  font-weight: 700; /* Negrito para títulos */
+  font-size: 1.8em; /* Tamanho base para h2 */
+}
+
+h3 {
+  font-size: 1.5em; /* Tamanho para h3 */
+}
+
+h4 {
+  font-size: 1.2em; /* Tamanho para h4 */
+}
+
+/* Estilos para o Rodapé */
+footer {
+  text-align: center; /* Alinha o texto ao centro */
+  padding: 1.5em 15px; /* Preenchimento interno */
+  background-color: #333333; /* Fundo cinza escuro */
+  color: #eeeeee; /* Cor do texto no rodapé */
+  margin-top: 40px; /* Margem superior */
+  font-size: 0.95em; /* Tamanho da fonte */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra superior */
+  width: 100%; /* Garante que o rodapé ocupe 100% da largura da tela */
+  /* box-sizing: border-box; já definido globalmente */
+}
+
+/* Estilos para Formulários */
+form {
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+form div {
+  margin-bottom: 20px;
+  display: flex; /* Habilita Flexbox para alinhar label e input/span */
+  flex-wrap: wrap; /* Permite quebrar para a próxima linha em telas menores */
+  align-items: center; /* Alinha itens verticalmente ao centro */
+  gap: 10px; /* Espaço entre os itens flex */
+}
+
+form label {
+  display: block; /* Ainda display block para compatibilidade */
+  margin-bottom: 0; /* Remove margem inferior padrão para flexbox */
+  flex: 1 1 100px; /* Label ocupa no mínimo 100px ou 100% */
+  max-width: 150px; /* Limita largura da label para desktop */
+  font-weight: 600;
+  color: #555555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select {
+  width: auto; /* Permite que o input ocupe o restante do espaço */
+  flex-grow: 1; /* Input cresce para preencher o espaço */
+  min-width: 150px; /* Largura mínima para o input */
+  padding: 12px;
+  border: 1px solid #bbbbbb;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form select:focus {
+  border-color: #800000;
+  box-shadow: 0 0 5px rgba(128, 0, 0, 0.5);
+  outline: none;
+}
+
+/* Estilos para Botões de Ação Principal, Sucesso, Perigo e Secundários */
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-secondary {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-right: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: inline-block; /* Comportamento inline, mas permite dimensões */
+  margin-bottom: 10px; /* Margem inferior para espaçamento em telas pequenas */
+  text-align: center; /* Centraliza o texto do botão */
+  white-space: nowrap; /* Impede quebra de linha no texto do botão */
+}
+
+.btn-primary {
+  background-color: #800000;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #a00000;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-danger {
+  background-color: #c0392b;
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #a00000;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para Tabelas */
+.table-container {
+  /* Novo contêiner para tabelas rolantes */
+  width: 100%; /* Ocupa a largura total disponível */
+  overflow-x: auto; /* Adiciona rolagem horizontal se o conteúdo for maior */
+  -webkit-overflow-scrolling: touch; /* Melhor rolagem em iOS */
+  margin-top: 25px; /* Margem superior */
+}
+
+table {
+  width: 100%; /* Ocupa 100% do seu contêiner */
+  min-width: 600px; /* Largura mínima para tabelas, para forçar a rolagem em telas pequenas */
+  border-collapse: collapse; /* Colapsa as bordas das células */
+  background-color: #ffffff; /* Fundo branco */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra */
+  border-radius: 10px; /* Cantos arredondados */
+  overflow: hidden; /* Importante para manter bordas arredondadas e controlar scroll */
+}
+
+table thead tr {
+  background-color: #800000; /* Cabeçalho da tabela em vermelho escuro */
+  color: white; /* Cor do texto no cabeçalho */
+}
+
+table th,
+table td {
+  padding: 15px; /* Preenchimento interno das células */
+  text-align: left; /* Alinhamento do texto */
+  border-bottom: 1px solid #eeeeee; /* Borda inferior */
+  vertical-align: top; /* Alinha o conteúdo ao topo das células */
+  white-space: nowrap; /* Impede quebras de linha nas células da tabela (FORÇA ROLAGEM) */
+}
+
+table tbody tr:nth-child(even) {
+  /* Estilo para linhas pares */
+  background-color: #fdfdfd;
+}
+
+table tbody tr:hover {
+  /* Estilo ao passar o mouse sobre a linha */
+  background-color: #f0f0f0;
+}
+
+/* Estilos para Botões dentro de tabelas */
+table button {
+  background-color: #007bff; /* Azul para editar */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+}
+
+table button.delete-btn,
+.btn-remover-receita {
+  /* Vermelho para excluir/remover */
+  background-color: #c0392b;
+}
+
+table button:hover {
+  opacity: 0.9;
+}
+
+table button.delete-btn:hover,
+.btn-remover-receita:hover {
+  background-color: #a00000;
+}
+
+/* Estilos para Controles de Filtro (para relatórios) */
+.filter-controls {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-controls label {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.filter-controls select {
+  width: auto;
+  min-width: 150px;
+  flex-grow: 1;
+}
+
+/* Estilos específicos para a lista de produtos na página de receitas */
+.product-list-container {
+  max-height: 350px;
+  overflow-y: auto;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+#lista-produtos-receita li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#lista-produtos-receita li:last-child {
+  border-bottom: none;
+}
+
+#lista-produtos-receita li:hover {
+  background-color: #f5f5f5;
+  transform: translateX(3px);
+}
+
+#lista-produtos-receita li.selected {
+  background-color: #feeaea;
+  font-weight: bold;
+  border-left: 5px solid #800000;
+  color: #800000;
+}
+
+/* Estilos para Avisos (na produção, por exemplo) */
+#aviso-estoque {
+  color: #800000;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #ffedee;
+  border: 1px solid #800000;
+  border-radius: 5px;
+}
+
+/* Classe para botões de ação (ex: Adicionar Nova Matéria-Prima, Registrar Entrada) */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Estilos para o contêiner de mensagens de feedback */
+#feedback-message {
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  max-width: 800px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: auto;
+  z-index: 1000; /* Garante que a mensagem fique acima de outros elementos */
+  position: relative; /* Necessário para z-index funcionar */
+}
+
+#feedback-message.hidden {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#feedback-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+#feedback-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ============================================== */
+/* MEDIAS QUERIES PARA RESPONSIVIDADE             */
+/* ============================================== */
+
+/* Para telas menores que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  nav ul {
+    flex-direction: column;
+    max-width: 100%;
+    border-radius: 0;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  nav ul li a {
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 0.85em;
+  }
+
+  main {
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 0;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  h4 {
+    font-size: 1.1em;
+  }
+
+  /* Formulários: Labels e Inputs empilhados */
+  form div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  form label {
+    max-width: 100%;
+    margin-bottom: 0;
+    flex: none;
+  }
+
+  form input[type="text"],
+  form input[type="number"],
+  form input[type="date"],
+  form select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Botões em formulários e action-buttons: Empilhados */
+  form button,
+  .action-buttons button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  /* Tabelas: Garante rolagem horizontal */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 550px;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  table th,
+  table td {
+    padding: 8px 10px;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+
+  /* Filtros (relatórios): Empilhados */
+  .filter-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filter-controls select {
+    width: 100%;
+  }
+
+  /* Rodapé */
+  footer {
+    padding: 1em 15px;
+    font-size: 0.8em;
+  }
+}
+
+/* Para telas muito pequenas (smartphones em pé) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  nav ul li a {
+    padding: 10px 5px;
+    font-size: 0.8em;
+  }
+
+  table {
+    min-width: 450px;
+  }
+}

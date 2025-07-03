@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receitas - Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Receitas de Massas</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos Acabados</a></li>
+          <li><a href="ingredientes.html">Matérias-Primas</a></li>
+          <li><a href="receitas.html">Receitas</a></li>
+          <li><a href="producao.html">Produção</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="receitas-section">
+        <h2>Gerenciamento de Receitas por Produto</h2>
+
+        <button id="btnCriarNovaReceita" class="btn-primary">
+          Criar Nova Receita (Novo Produto)
+        </button>
+        <p>
+          Ou selecione um produto abaixo para visualizar ou editar sua receita
+          existente:
+        </p>
+
+        <div
+          id="form-criar-novo-produto-receita"
+          style="
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+          "
+        >
+          <h3>Criar Novo Produto e Receita:</h3>
+          <form id="formNovoProdutoReceita">
+            <div>
+              <label for="novoProdutoNome">Nome da Massa/Produto:</label>
+              <input
+                type="text"
+                id="novoProdutoNome"
+                placeholder="Ex: Lasanha de Quatro Queijos"
+                required
+              />
+            </div>
+            <div>
+              <label for="novoProdutoUnidade">Unidade de Medida:</label>
+              <input
+                type="text"
+                id="novoProdutoUnidade"
+                placeholder="Ex: unidade, Kg, bandeja"
+                required
+              />
+            </div>
+            <div>
+              <label for="novoProdutoPreco">Preço de Venda (opcional):</label>
+              <input
+                type="number"
+                id="novoProdutoPreco"
+                step="0.01"
+                value="0.00"
+              />
+            </div>
+            <button type="submit" class="btn-success">
+              Continuar para Adicionar Ingredientes
+            </button>
+            <button
+              type="button"
+              onclick="cancelarNovoProdutoReceita()"
+              class="btn-secondary"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+
+        <div class="product-list-container">
+          <ul id="lista-produtos-receita"></ul>
+        </div>
+
+        <div id="receita-detalhes" style="display: none">
+          <h3>Receita para: <span id="nome-produto-receita"></span></h3>
+          <input type="hidden" id="produto-receita-id" />
+
+          <h4>Ingredientes Necessários:</h4>
+          <table id="tabela-ingredientes-receita">
+            <thead>
+              <tr>
+                <th>Ingrediente</th>
+                <th>Quantidade (por unidade de produto)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h4>Adicionar Ingrediente à Receita:</h4>
+          <form id="form-adicionar-ingrediente-receita">
+            <div>
+              <label for="selectIngrediente">Ingrediente:</label>
+              <select id="selectIngrediente" required></select>
+            </div>
+            <div>
+              <label for="quantidadeIngredienteReceita">Quantidade:</label>
+              <input
+                type="number"
+                id="quantidadeIngredienteReceita"
+                step="0.001"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-primary">
+              Adicionar/Atualizar Ingrediente
+            </button>
+          </form>
+          <div style="margin-top: 20px; text-align: right">
+            <button type="button" onclick="salvarReceita()" class="btn-success">
+              Salvar Receita Completa
+            </button>
+            <button
+              type="button"
+              onclick="cancelarEdicaoReceita()"
+              class="btn-secondary"
+            >
+              Voltar à Lista de Produtos
+            </button>
+          </div>
+        </div>
+      </section>
+      <div id="feedback-message" class="hidden"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Sua Fábrica de Massas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/receitas.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produção - Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Registro de Produção</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos Acabados</a></li>
+          <li><a href="ingredientes.html">Matérias-Primas</a></li>
+          <li><a href="receitas.html">Receitas</a></li>
+          <li><a href="producao.html">Produção</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="producao-section">
+        <h2>Registrar Nova Produção</h2>
+
+        <form id="form-producao">
+          <div>
+            <label for="selectProdutoProducao">Produto a ser Produzido:</label>
+            <select id="selectProdutoProducao" required>
+              <option value="">Selecione um produto</option>
+            </select>
+          </div>
+          <div>
+            <label for="quantidadeProduzida">Quantidade Produzida:</label>
+            <input
+              type="number"
+              id="quantidadeProduzida"
+              step="0.01"
+              min="0.01"
+              required
+            />
+          </div>
+          <div>
+            <label for="dataProducao">Data da Produção:</label>
+            <input type="date" id="dataProducao" required />
+          </div>
+          <button type="button" id="btnRegistrarProducao" class="btn-primary">
+            Registrar Produção
+          </button>
+        </form>
+
+        <div
+          id="ingredientes-necessarios"
+          style="
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+          "
+        >
+          <h3>Resumo de Ingredientes Necessários:</h3>
+          <ul id="lista-resumo-ingredientes"></ul>
+          <p id="aviso-estoque" style="color: red; font-weight: bold"></p>
+        </div>
+
+        <h2 style="margin-top: 40px">Histórico de Produção</h2>
+        <table id="tabela-producao">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+      <div id="feedback-message" class="hidden"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Sua Fábrica de Massas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/producao.js"></script>
+  </body>
+</html>
